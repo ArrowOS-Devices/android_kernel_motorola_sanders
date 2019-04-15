@@ -116,6 +116,25 @@ struct generic_get_data_ {
 };
 static struct generic_get_data_ *generic_get_data;
 
+static inline uint32_t q6asm_get_pcm_format_id(uint32_t media_format_block_ver)
+{
+	uint32_t pcm_format_id;
+
+	switch (media_format_block_ver) {
+	case PCM_MEDIA_FORMAT_V4:
+		pcm_format_id = ASM_MEDIA_FMT_MULTI_CHANNEL_PCM_V4;
+		break;
+	case PCM_MEDIA_FORMAT_V3:
+		pcm_format_id = ASM_MEDIA_FMT_MULTI_CHANNEL_PCM_V3;
+		break;
+	case PCM_MEDIA_FORMAT_V2:
+	default:
+		pcm_format_id = ASM_MEDIA_FMT_MULTI_CHANNEL_PCM_V2;
+		break;
+	}
+	return pcm_format_id;
+}
+
 #ifdef CONFIG_DEBUG_FS
 #define OUT_BUFFER_SIZE 56
 #define IN_BUFFER_SIZE 24
@@ -133,7 +152,6 @@ static int in_cont_index;
 static int out_cold_index;
 static char *out_buffer;
 static char *in_buffer;
-
 
 static int audio_output_latency_dbgfs_open(struct inode *inode,
 							struct file *file)
