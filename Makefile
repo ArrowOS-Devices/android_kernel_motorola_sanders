@@ -639,6 +639,9 @@ KBUILD_CFLAGS	+= $(call cc-disable-warning, attribute-alias)
 KBUILD_CFLAGS	+= $(call cc-option,-fno-PIE)
 KBUILD_AFLAGS	+= $(call cc-option,-fno-PIE)
 
+## hide "error: cast to smaller integer type 'eSapStatus' from 'void *' "
+KBUILD_CFLAGS	+= $(call cc-disable-warning, pointer-to-int-cast)
+
 ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
 KBUILD_CFLAGS	+= $(call cc-option,-Oz,-Os)
 else
