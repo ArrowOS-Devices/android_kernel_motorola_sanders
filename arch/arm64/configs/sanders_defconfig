@@ -650,6 +650,7 @@ CONFIG_CRYPTO_AES_ARM64_NEON_BLK=y
 CONFIG_QMI_ENCDEC=y
 CONFIG_MSM_HOTPLUG=y
 CONFIG_ASMP=y
+CONFIG_DTV_FC8300=y
 
 #
 # Please avoid changing the Qualcomm defconfig files and use this file to
