@@ -9,7 +9,6 @@
  * manipulate wakelocks on Android.
  */
 
-#include <linux/capability.h>
 #include <linux/ctype.h>
 #include <linux/device.h>
 #include <linux/err.h>
@@ -81,7 +80,7 @@ static inline void decrement_wakelocks_number(void) {}
 
 #ifdef CONFIG_PM_WAKELOCKS_GC
 #define WL_GC_COUNT_MAX	100
-#define WL_GC_TIME_SEC	300
+#define WL_GC_TIME_SEC	60
 
 static LIST_HEAD(wakelocks_lru_list);
 static unsigned int wakelocks_gc_count;
@@ -191,9 +190,6 @@ int pm_wake_lock(const char *buf)
 	size_t len;
 	int ret = 0;
 
-	if (!capable(CAP_BLOCK_SUSPEND))
-		return -EPERM;
-
 	while (*str && !isspace(*str))
 		str++;
 
@@ -242,9 +238,6 @@ int pm_wake_unlock(const char *buf)
 	struct wakelock *wl;
 	size_t len;
 	int ret = 0;
-
-	if (!capable(CAP_BLOCK_SUSPEND))
-		return -EPERM;
 
 	len = strlen(buf);
 	if (!len)
