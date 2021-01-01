@@ -6,8 +6,8 @@ DATE_POSTFIX=$(date +"%Y%m%d%H%M%S")
 
 ## Copy this script inside the kernel directory
 KERNEL_DIR=$PWD
-KERNEL_TOOLCHAIN=/home/ashwatthama95/prebuilts/aarch64-linux-gnu/bin/aarch64-linux-android-
-CLANG_TOOLCHAIN=/home/ashwatthama95/prebuilts/clang/bin/clang-9
+KERNEL_TOOLCHAIN=/home/ashwatthamasanders20/prebuilts/aarch64-linux-gnu/bin/aarch64-linux-android-
+CLANG_TOOLCHAIN=/home/ashwatthamasanders20/prebuilts/clang/bin/clang-11
 KERNEL_DEFCONFIG=sanders_defconfig
 DTBTOOL=$KERNEL_DIR/Dtbtool/
 ANY_KERNEL3_DIR=$KERNEL_DIR/AnyKernel3/
@@ -28,7 +28,7 @@ export ARCH=arm64
 export SUBARCH=arm64
 export KBUILD_BUILD_USER="AShwatthama"
 export KBUILD_BUILD_HOST="MadKernelBox"
-export KBUILD_COMPILER_STRING="Clang Version 9.0.8"
+export KBUILD_COMPILER_STRING="Clang Version 11.0.5"
 
 # Clean build always lol
 echo "**** Cleaning ****"
@@ -67,7 +67,7 @@ cp $KERNEL_DIR/out/arch/arm64/boot/dtb $ANY_KERNEL3_DIR/
 echo "**** Time to zip up! ****"
 cd $ANY_KERNEL3_DIR/
 zip -r9 $FINAL_KERNEL_ZIP * -x README $FINAL_KERNEL_ZIP
-cp $KERNEL_DIR/AnyKernel3/$FINAL_KERNEL_ZIP /home/ashwatthama95/MadKernels/$FINAL_KERNEL_ZIP
+cp $KERNEL_DIR/AnyKernel3/$FINAL_KERNEL_ZIP /home/ashwatthamasanders20/MadKernels/$FINAL_KERNEL_ZIP
 
 echo "**** Good Bye!! ****"
 cd $KERNEL_DIR
